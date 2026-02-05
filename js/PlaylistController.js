@@ -8,6 +8,8 @@ export default class PlaylistController {
     init() {
         this.view.bindAddSong(this.handleAddSong.bind(this));
         this.view.bindCreatePlaylist(this.handleCreatePlaylist.bind(this));
+        this.view.bindDeletePlaylist(this.handleDeletePlaylist.bind(this));
+        this.view.bindDeleteSong(this.handleDeleteSong.bind(this));
     }
 
     handleAddSong(song) {
@@ -22,6 +24,16 @@ export default class PlaylistController {
         this.model.createPlaylist(name, this.tempSongs);
         this.tempSongs = [];
         this.view.clearForm();
+        this.view.renderPlaylists(this.model.getPlaylists());
+    }
+
+    handleDeletePlaylist(id) {
+        this.model.deletePlaylist(id);
+        this.view.renderPlaylists(this.model.getPlaylists());
+    }
+
+    handleDeleteSong(playlistId, songTitle) {
+        this.model.deleteSongFromPlaylist(playlistId, songTitle);
         this.view.renderPlaylists(this.model.getPlaylists());
     }
 }
