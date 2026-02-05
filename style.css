@@ -1,0 +1,103 @@
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    background: #111;
+    color: #f5f5f5
+}
+
+header{
+    background: #1db954;
+    padding: 1rem 2rem;
+}
+
+h1, h2, h3{
+    margin: 0;
+}
+
+main{
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+section{
+    background: #181818;
+    padding: 1.5rem;
+    border-radius: 8px;
+    flex: 1;
+}
+
+label{
+    display: block;
+    margin-bottom: 1rem;
+}
+
+input{
+    width : 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background: #121212;
+    color: #f5f5f5;
+}
+button{
+    background: #1db954;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover{
+    background: #1ed760;
+}
+
+.song-inputs{
+    display: grid;
+    grid-template-columns: repeat(3,1fr) auto;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#temp-song-list{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+}
+#temp-song-list li{
+    padding: 0.25rem 0;
+    border-bottom: 1px solid #333;
+    font-size: 0.9rem; 
+}
+
+.playlist-card{
+    border:1px solid #333;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #202020;
+}
+
+.playlist-card h3{
+    margin-top: 0.5rem;
+}
+
+.playlist-group{
+    margin-bottom: 0.75rem;
+}
+
+.playlist-group h4{
+    margin: 0 0 0.25rem;
+    font-size: 0.95rem;
+    color: #1db954;
+}
+
+.playlist-group ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+}
