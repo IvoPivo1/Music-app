@@ -71,7 +71,7 @@ export default class PlaylistView {
             playlist.songs.forEach((song) => {
                 const li = document.createElement('li');
                 li.textContent = `${song.title} - ${song.artist} [${song.genre}]`;
-                ul.appendChild(li);
+                ol.appendChild(li);
             });
             card.appendChild(ol);
             this.playlistList.appendChild(card);
