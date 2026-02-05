@@ -55,7 +55,7 @@ export default class PlaylistView {
         this.tempSongList.innerHTML = '';
     }
 
-    renderPlaylists(playlists, getGroupedDataFn) {
+    renderPlaylists(playlists) {
         this.playlistList.innerHTML = '';
 
         playlists.forEach((playlist) => {

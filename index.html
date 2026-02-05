@@ -1,55 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Music</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1></h1>
+      <h1></h1>
     </header>
 
     <main>
-        <section class="createPlaylist">
-            <h2>Create playlist</h2>
-            <form id="playlist-form">
-                <label>
-                    Name of playlist:
-                    <input type="text" id="playlist-name" name="playlist-name" required>
-                </label>
+      <section class="createPlaylist">
+        <h2>Create playlist</h2>
+        <form id="playlist-form">
+          <!-- Playlist name -->
+          <div class="input-group">
+            <input type="text" id="playlist-name" placeholder=" " required autocomplete="off"/>
+            <label for="playlist-name">Playlist name</label>
+            <span class="underline"></span>
+          </div>
+          <!-- Song title -->
+          <div class="input-group">
+            <input type="text" id="song-title" placeholder=" " autocomplete="off" />
+            <label for="song-title">Song title</label>
+            <span class="underline"></span>
+          </div>
+          <!-- Song artist -->
+          <div class="input-group">
+            <input type="text" id="song-artist" placeholder=" " autocomplete="off" />
+            <label for="song-artist">Artist</label>
+            <span class="underline"></span>
+          </div>
+          <!-- Song genre -->
+          <div class="input-group">
+            <input type="text" id="song-genre" placeholder=" " autocomplete="off" />
+            <label for="song-genre">Genre</label>
+            <span class="underline"></span>
+          </div>
+          <button id="add-song-btn" type="button">Add song</button>
+          <ul id="temp-song-list"></ul>
+          <button type="submit">Create playlist</button>
+        </form>
+      </section>
 
-                <h3>Add more songs</h3>
-                <div class="song-inputs">
-                    <input type="text" id="song-title" placeholder="Song title" />
-                    <input type="text" id="song-artist" placeholder="Artist" />
-                    <input type="text" id="song-genre" placeholder="Genre" />
-                    <button type="button" id="add-song-btn">Add more songs</button>
-                </div>
-
-                <ul id="temp-song-list"></ul>
-
-                <button type="submit">Create playlist</button>
-            </form>
-        </section>
-
-        <section class="playlists">
-            <h2>Playlists</h2>
-            <div id="playlist-list"></div>
-        </section>
-        
+      <section class="playlists">
+        <h2>Playlists</h2>
+        <div id="playlist-list"></div>
+      </section>
     </main>
     <script type="module">
-        import PlaylistModel from './js/PlaylistModel.js';
-        import PlaylistView from './js/PlaylistView.js';
-        import PlaylistController from './js/PlaylistController.js';
+      import PlaylistModel from "./js/PlaylistModel.js";
+      import PlaylistView from "./js/PlaylistView.js";
+      import PlaylistController from "./js/PlaylistController.js";
 
-        const model = new PlaylistModel();
-    const view = new PlaylistView();
-    const controller = new PlaylistController(model, view);
+      const model = new PlaylistModel();
+      const view = new PlaylistView();
+      const controller = new PlaylistController(model, view);
 
-    controller.init();
+      controller.init();
     </script>
-</body>
+  </body>
 </html>
