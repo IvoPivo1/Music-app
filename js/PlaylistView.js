@@ -66,14 +66,14 @@ export default class PlaylistView {
             title.textContent = playlist.name;
             card.appendChild(title);
 
-            const ul = document.createElement('ul');
+            const ol = document.createElement('ol');
 
             playlist.songs.forEach((song) => {
                 const li = document.createElement('li');
                 li.textContent = `${song.title} - ${song.artist} [${song.genre}]`;
                 ul.appendChild(li);
             });
-            card.appendChild(ul);
+            card.appendChild(ol);
             this.playlistList.appendChild(card);
         });
     }
