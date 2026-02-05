@@ -22,13 +22,13 @@
 
                 <h3>Add more songs</h3>
                 <div class="song-inputs">
-                    <input type="text" id="song-title" placeholder="Song title" required/>
-                    <input type="text" id="song-artist" placeholder="Artist" required/>
-                    <input type="text" id="song-genre" placeholder="Genre" required/>
+                    <input type="text" id="song-title" placeholder="Song title" />
+                    <input type="text" id="song-artist" placeholder="Artist" />
+                    <input type="text" id="song-genre" placeholder="Genre" />
                     <button type="button" id="add-song-btn">Add more songs</button>
                 </div>
 
-                <ul id=""temp-song-list"></ul>
+                <ul id="temp-song-list"></ul>
 
                 <button type="submit">Create playlist</button>
             </form>
@@ -44,6 +44,12 @@
         import PlaylistModel from './js/PlaylistModel.js';
         import PlaylistView from './js/PlaylistView.js';
         import PlaylistController from './js/PlaylistController.js';
+
+        const model = new PlaylistModel();
+    const view = new PlaylistView();
+    const controller = new PlaylistController(model, view);
+
+    controller.init();
     </script>
 </body>
 </html>
