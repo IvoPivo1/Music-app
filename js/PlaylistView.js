@@ -66,12 +66,14 @@ export default class PlaylistView {
             title.textContent = playlist.name;
             card.appendChild(title);
 
-            const { byGenre, byArtist, byTitle } = getGroupedDataFn(playlist);
+            const ul = document.createElement('ul');
 
-            card.appendChild(this.createGroupElement('By Genre', byGenre));
-            card.appendChild(this.createGroupElement('By Artist', byArtist));
-            card.appendChild(this.createGroupElement('By Title', byTitle));
-
+            playlist.songs.forEach((song) => {
+                const li = document.createElement('li');
+                li.textContent = `${song.title} - ${song.artist} [${song.genre}]`;
+                ul.appendChild(li);
+            });
+            card.appendChild(ul);
             this.playlistList.appendChild(card);
         });
     }
@@ -87,10 +89,11 @@ export default class PlaylistView {
         const list = document.createElement('ul');
         Object.keys(groupObject).forEach((key) => {
             const li = document.createElement('li');
+
             const songs = groupObject[key]
                 .map(song => `${song.title} - ${song.artist} [${song.genre}]`)
-                .join(', ');
-            li.textContent = `${key}: ${songs}`;
+                .join('<br>');
+            li.innerHTML = `<strong>${key}:</strong><br>${songs}`;
             list.appendChild(li);
         });
 
