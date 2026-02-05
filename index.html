@@ -17,29 +17,30 @@
         <form id="playlist-form">
           <!-- Playlist name -->
           <div class="input-group">
-            <input type="text" id="playlist-name" placeholder=" " required />
+            <input type="text" id="playlist-name" placeholder=" " required autocomplete="off"/>
             <label for="playlist-name">Playlist name</label>
             <span class="underline"></span>
           </div>
           <!-- Song title -->
           <div class="input-group">
-            <input type="text" id="song-title" placeholder=" " required />
+            <input type="text" id="song-title" placeholder=" " autocomplete="off" />
             <label for="song-title">Song title</label>
             <span class="underline"></span>
           </div>
           <!-- Song artist -->
           <div class="input-group">
-            <input type="text" id="song-artist" placeholder=" " required />
+            <input type="text" id="song-artist" placeholder=" " autocomplete="off" />
             <label for="song-artist">Artist</label>
             <span class="underline"></span>
           </div>
           <!-- Song genre -->
           <div class="input-group">
-            <input type="text" id="song-genre" placeholder=" " required />
+            <input type="text" id="song-genre" placeholder=" " autocomplete="off" />
             <label for="song-genre">Genre</label>
             <span class="underline"></span>
           </div>
-          <button id="add-song-btn">Add song</button>
+          <button id="add-song-btn" type="button">Add song</button>
+          <ul id="temp-song-list"></ul>
           <button type="submit">Create playlist</button>
         </form>
       </section>

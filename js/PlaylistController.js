@@ -22,6 +22,6 @@ export default class PlaylistController {
         this.model.createPlaylist(name, this.tempSongs);
         this.tempSongs = [];
         this.view.clearForm();
-        this.view.renderPlaylists(this.model.getPlaylists(), this.model.getGroupedData.bind(this.model));
+        this.view.renderPlaylists(this.model.getPlaylists());
     }
 }

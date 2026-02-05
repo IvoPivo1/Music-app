@@ -30,6 +30,11 @@ section{
     width: 60%;
 }
 
+section h2{
+    margin-bottom: 1rem;
+    color: #1db954;
+}
+
 label{
     display: block;
     margin-bottom: 1rem;
@@ -127,12 +132,11 @@ button:hover{
     font-size: 0.9rem; 
 }
 
-#song-title, #song-artist, #song-genre{
+#song-title, #song-artist, #song-genre, #playlist-name{
+    padding-top: 0.9rem;
 }
 
-#playlist-name{
-    width: 74%;
-}
+
 
 
 .playlist-card{
