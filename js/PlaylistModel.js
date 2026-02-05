@@ -1,6 +1,6 @@
 export default class PlaylistModel {
   constructor() {
-    this.playlists = [];
+    this.playlists = this.load() || [];
   }
 
   createPlaylist(name, songs) {
@@ -10,6 +10,7 @@ export default class PlaylistModel {
       songs: [...songs], // [{titlem, artist, genre}]
     };
     this.playlists.push(playlist);
+    this.save();
     return playlist;
   }
 
@@ -17,29 +18,24 @@ export default class PlaylistModel {
     return this.playlists;
   }
 
-  // Helping method to group songs by genre, artist, or title
-  getGroupedData(playlist) {
-    const byGenre = {};
-    const byArtist = {};
-    const byTitle = {};
-    playlist.songs.forEach((song) => {
-      if (!byGenre[song.genre]) byGenre[song.genre] = [];
-      byGenre[song.genre].push(song);
-      if (!byArtist[song.artist]) byArtist[song.artist] = [];
-      byArtist[song.artist].push(song);
-      if (!byTitle[song.title]) byTitle[song.title] = [];
-      byTitle[song.title].push(song);
-    });
-    return { byGenre, byArtist, byTitle };
-  }
-
   deletePlaylist(id) {
     this.playlists = this.playlists.filter((p) => p.id !== id);
+    this.save();
   }
 
-  deleteSongFromPlaylist(playlistId, songTitle) {
+   deleteSongFromPlaylist(playlistId, songIndex) {
     const playlist = this.playlists.find((p) => p.id === playlistId);
     if (!playlist) return;
     playlist.songs.splice(songIndex, 1);
+    this.save();
   }
+
+  save() {
+    localStorage.setItem('playlists', JSON.stringify(this.playlists));
+  }
+  load() {
+    const data = localStorage.getItem('playlists');
+    return data ? JSON.parse(data) : null;
+  }
+
 }
