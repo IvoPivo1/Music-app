@@ -79,7 +79,7 @@ export default class playlistView {
         wrapper.appendChild(heading);
 
         const list = document.createElement('ul');
-        Object.keys(groupObject).forEach((key) => {¨
+        Object.keys(groupObject).forEach((key) => {
             const li = document.createElement('li');
             const songs = groupObject[key].map(song => `${song.title} - ${song.artist} [${song.genre}]`).join(', ');
             li.textContent = `${key}: ${songs}`;
