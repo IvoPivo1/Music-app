@@ -32,4 +32,14 @@ export default class PlaylistModel {
     });
     return { byGenre, byArtist, byTitle };
   }
+
+  deletePlaylist(id) {
+    this.playlists = this.playlists.filter((p) => p.id !== id);
+  }
+
+  deleteSongFromPlaylist(playlistId, songTitle) {
+    const playlist = this.playlists.find((p) => p.id === playlistId);
+    if (!playlist) return;
+    playlist.songs.splice(songIndex, 1);
+  }
 }

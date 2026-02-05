@@ -66,15 +66,47 @@ export default class PlaylistView {
             title.textContent = playlist.name;
             card.appendChild(title);
 
+            const deletePlaylistBtn = document.createElement('button');
+            deletePlaylistBtn.textContent = 'Delete Playlist';
+            deletePlaylistBtn.className = 'delete-playlist-btn';
+            deletePlaylistBtn.dataset.playlistId = playlist.id;
+            card.appendChild(deletePlaylistBtn);
+
             const ol = document.createElement('ol');
 
-            playlist.songs.forEach((song) => {
+            playlist.songs.forEach((song, index) => {
                 const li = document.createElement('li');
                 li.textContent = `${song.title} - ${song.artist} [${song.genre}]`;
+            
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Remove';
+                deleteBtn.className = 'delete-song-btn';
+                deleteBtn.dataset.playlistId = playlist.id;
+                deleteBtn.dataset.songIndex = index;
+                li.appendChild(deleteBtn);
                 ol.appendChild(li);
             });
             card.appendChild(ol);
             this.playlistList.appendChild(card);
+        });
+    }
+
+    bindDeletePlaylist(handler) {
+        this.playlistList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-playlist-btn')) {
+                const playlistId = e.target.dataset.playlistId;
+                handler(playlistId);
+            }
+        });
+    }
+
+    bindDeleteSong(handler) {
+        this.playlistList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-song-btn')) {
+                const playlistId = e.target.dataset.playlistId;
+                const songIndex = parseInt(e.target.dataset.songIndex, 10);
+                handler(playlistId, songIndex);
+            }
         });
     }
 
