@@ -6,6 +6,8 @@ export default class PlaylistController {
     }
 
     init() {
+        this.view.renderPlaylists(this.model.getPlaylists());
+
         this.view.bindAddSong(this.handleAddSong.bind(this));
         this.view.bindCreatePlaylist(this.handleCreatePlaylist.bind(this));
         this.view.bindDeletePlaylist(this.handleDeletePlaylist.bind(this));
