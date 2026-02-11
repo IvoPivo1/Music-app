@@ -63,6 +63,12 @@ button:hover{
     background: #1ed760;
 }
 
+.delete-playlist-btn{
+    margin-top: 1rem;
+}
+
+
+
 .song-inputs{
     display: grid;
     grid-template-columns: repeat(3,1fr) auto;
@@ -147,6 +153,13 @@ button:hover{
     background: #202020;
 }
 
+.playlist-card li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
+}
+
 .playlist-card h3{
     margin-top: 0.5rem;
 }
@@ -161,9 +174,7 @@ button:hover{
     color: #1db954;
 }
 
-.playlist-group ul{
-    list-style: none;
-    padding: 0;
+.playlist-card ol{
+    padding: 1.2rem;
     margin: 0;
-    font-size: 0.9rem;
 }
