@@ -104,7 +104,6 @@ button:hover{
     transition: 0.2s ease;
 }
 
-/* Underline animation */
 .input-group .underline {
     position: absolute;
     left: 0;
@@ -115,7 +114,6 @@ button:hover{
     transition: width 0.3s ease;
 }
 
-/* När input är fokuserad eller har text */
 .input-group input:focus ~ label,
 .input-group input:not(:placeholder-shown) ~ label {
     top: 0;
@@ -127,23 +125,73 @@ button:hover{
     width: 100%;
 }
 
-#temp-song-list{
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1rem;
-}
-#temp-song-list li{
-    padding: 0.25rem 0;
-    border-bottom: 1px solid #333;
-    font-size: 0.9rem; 
+.select-group{
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
 }
 
-#song-title, #song-artist, #song-genre, #playlist-name{
-    padding-top: 0.9rem;
+.select-group select{
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 2px solid #444;
+    background: transparent;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
 }
 
+.select-group label{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 14px;
+    pointer-events: none;
+    transition: 0.2s ease;
+}
 
+.select-group select:not([value=""]) ~ label{
+    top: 0;
+    font-size: 11px;
+    color: #1db954;
+}
 
+.select-group .underline{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #ff6bcb, #7b61ff);
+    transition: width 0.3s ease;
+}
+
+.select-group select:focus ~ .underline {
+    width: 100%;
+}
+
+.select-group select:valid ~ label,
+.select-group select:focus ~ label{
+    top: 0;
+    font-size: 11px;
+    color: #1db954;
+}
+
+.select-group select option{
+    background: #181818;
+    color: #fff;
+    padding: 10px;
+}
+
+.select-group select option:hover{
+    background: #1db954;
+    color: #000;
+}
 
 .playlist-card{
     border:1px solid #333;
