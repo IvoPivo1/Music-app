@@ -16,7 +16,7 @@ export default class PlaylistView {
         this.addSongBtn.addEventListener('click', () => {
             const title = this.songsTitleInput.value.trim();
             const artist = this.songsArtistInput.value.trim();
-            const genre = this.songsGenreInput.value.trim();
+            const genre = this.songsGenreInput.value;
 
             if (!title || !artist || !genre) return;
 
@@ -72,21 +72,37 @@ export default class PlaylistView {
             deletePlaylistBtn.dataset.playlistId = playlist.id;
             card.appendChild(deletePlaylistBtn);
 
-            const ol = document.createElement('ol');
-
+            const grouped = {};
             playlist.songs.forEach((song, index) => {
-                const li = document.createElement('li');
-                li.textContent = `${song.title} - ${song.artist} [${song.genre}]`;
-            
-                const deleteBtn = document.createElement('button');
-                deleteBtn.textContent = 'Remove';
-                deleteBtn.className = 'delete-song-btn';
-                deleteBtn.dataset.playlistId = playlist.id;
-                deleteBtn.dataset.songIndex = index;
-                li.appendChild(deleteBtn);
-                ol.appendChild(li);
+                if (!grouped[song.genre]) grouped[song.genre] = [];
+                grouped[song.genre].push({...song, index});
             });
-            card.appendChild(ol);
+
+            Object.keys(grouped).forEach((genre) => {
+                const genreTitle = document.createElement('h4')
+                genreTitle.textContent = genre;
+                card.appendChild(genreTitle);
+
+                const ol = document.createElement('ol');
+
+                grouped[genre].forEach((songObj) => {
+                    const li = document.createElement('li');
+                    li.textContent = `${songObj.title} - ${songObj.artist}`;
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = 'Remove';
+                    deleteBtn.className = 'delete-song-btn';
+                    deleteBtn.dataset.playlistId = playlist.id;
+                    deleteBtn.dataset.songIndex = songObj.index;
+
+                    li.appendChild(deleteBtn);
+                    ol.appendChild(li);
+
+                });
+
+                card.appendChild(ol);
+            });
+            
             this.playlistList.appendChild(card);
         });
     }
